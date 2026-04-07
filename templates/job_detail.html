@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>{{ job.title }}</h1>
+    <p>{{ job.description }}</p>
+    <p><b>Budget:</b> ${{ job.budget }}</p>
+</div>
+
+<div class="card">
+    <h2>Bidlar</h2>
+
+    {% for bid in bids %}
+        <div class="bid-box">
+            <p><b>{{ bid.user.username }}</b> - ${{ bid.amount }}</p>
+            <p>{{ bid.message }}</p>
+            <p class="muted">{{ bid.created_at }}</p>
+        </div>
+    {% empty %}
+        <p>Hozircha bid yo'q.</p>
+    {% endfor %}
+</div>
+
+<div class="card">
+    <h2>Bid berish</h2>
+    <form method="post" action="/job/{{ job.id }}/bid/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Bid yuborish</button>
+    </form>
+</div>
+{% endblock %}

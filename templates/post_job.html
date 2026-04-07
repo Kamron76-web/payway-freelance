@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Post Job{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Yangi job joylash</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Joylash</button>
+    </form>
+</div>
+{% endblock %}

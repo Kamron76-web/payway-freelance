@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - PayWay{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Freelance xizmatlar platformasi</h1>
+    <p class="muted">Clientlar ish joylaydi, freelancerlar bid yuboradi.</p>
+</div>
+
+<h2>Ishlar ro'yxati</h2>
+
+{% for job in jobs %}
+    <div class="job-item">
+        <a href="/job/{{ job.id }}/">{{ job.title }}</a>
+        <p>{{ job.description }}</p>
+        <p><b>Budget:</b> ${{ job.budget }}</p>
+    </div>
+{% empty %}
+    <div class="card">
+        <p>Hozircha ish yo'q.</p>
+    </div>
+{% endfor %}
+{% endblock %}
