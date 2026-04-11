@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import FreelancerProfile, Job, Bid, Product
+from .models import FreelancerProfile, Job, Bid, Product, SellerRequest
 
 admin.site.register(FreelancerProfile)
 admin.site.register(Job)
 admin.site.register(Bid)
 admin.site.register(Product)
+admin.site.register(SellerRequest)

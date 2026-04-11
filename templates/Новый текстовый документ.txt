@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>PayWay Freelance</title>
+</head>
+
+<body style="font-family:Arial; background:#f2f2f2; margin:0;">
+
+<div style="background:#111827; color:white; padding:20px;">
+    <h2 style="margin:0;">PayWay Freelance Marketplace</h2>
+</div>
+
+<div style="width:900px; margin:40px auto; background:white; padding:30px; border-radius:10px;">
+
+<h1>PayWay Freelance Marketplace</h1>
+<p>TEST PAYWAY LIVE</p>
+
+<hr>
+
+<h2>Freelance xizmatlar</h2>
+
+{% for product in products %}
+
+<div style="border:1px solid #ddd; padding:20px; margin-bottom:20px; border-radius:8px;">
+
+```
+{% if product.image %}
+    <img src="{{ product.image.url }}" width="200">
+{% endif %}
+
+<h3>{{ product.title }}</h3>
+<p>{{ product.description }}</p>
+<b>Price: ${{ product.price }}</b>
+```
+
+</div>
+{% endfor %}
+
+<hr>
+
+{% if user.is_authenticated %}
+
+<p><b>Siz login qilgansiz</b></p>
+
+<p>
+<a href="/seller-apply/">Seller bo‘lish uchun ariza</a>
+</p>
+
+<p>
+<a href="/add-product/">Yangi xizmat qo‘shish</a>
+</p>
+
+{% else %}
+
+<p>
+<a href="/register/">Ro‘yxatdan o‘tish</a>
+</p>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
